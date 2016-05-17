@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Książkotok"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Książkotok" Height="528.86" Width="721.875">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="441*"/>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="lvBooks" HorizontalAlignment="Left" Height="100" Margin="10,47,0,0" VerticalAlignment="Top" Width="421" SelectionChanged="listView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Author}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label" Content="Książki" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="60,16,0,0" Click="button_Click"/>
+
     </Grid>
 </Window>

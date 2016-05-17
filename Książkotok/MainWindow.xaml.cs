@@ -20,9 +20,38 @@ namespace Książkotok
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Book> items = new List<Book>();
+        
+        Book tmpp;
+        Book tmpBook;
         public MainWindow()
         {
             InitializeComponent();
+
+            // tmpBook.Id = 9;
+            
+            tmpBook = new Book() {Author = "Grzyb",Id=12};
+            items.Add(new Book() { Id = 1, Author = "Kowalski" });
+            items.Add(tmpBook);
+            lvBooks.ItemsSource = items;
+        }
+        
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            AddBook okno = new AddBook();
+            okno.Show();
+            
+            tmpp = okno.book();
+           // MessageBox.Show(tmpp.Author);
+            items.Add(okno.book());
+            items.Add(new Book() {Author = "Julcia"});
+          //  lvBooks.ItemsSource = items;
         }
     }
 }
