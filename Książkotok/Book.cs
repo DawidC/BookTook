@@ -8,10 +8,13 @@ namespace Książkotok
 {
     public class Book
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
+        public string Id { get; set; } //int
+        public string Tytul { get; set; }
+        public string Autor { get; set; }
         public string ISBN { get; set; }
-        
+        public string Gatunek { get; set; }
+        public string Rokwyd { get; set; } //int
+        public string Uwagi { get; set; }
+
     }
 }

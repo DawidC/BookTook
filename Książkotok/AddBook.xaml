@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Książkotok"
         mc:Ignorable="d"
-        Title="Dodaj książkę" Height="300" Width="300">
+        Title="Dodaj książkę" Height="300" Width="360.662">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="66*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="146*"/>
+            <RowDefinition Height="123*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="button_add" Content="Dodaj" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="75" Click="button_add_Click" RenderTransformOrigin="-0.089,1.08" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox_autor" HorizontalAlignment="Left" Height="23" Margin="53.015,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" TextChanged="textBox_autor_TextChanged"/>
+        <Label x:Name="Label_autor" Content="Autor" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="label" Content="Tytuł" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="label1" Content="ISBN" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="label2" Content="Gatunek" HorizontalAlignment="Left" Margin="10,91,0,29" RenderTransformOrigin="-0.123,-0.028" Grid.ColumnSpan="2"/>
+        <Label x:Name="label3" Content="Rok wydania" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="label4" Content="Uwagi" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBox x:Name="textBox_tytul" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_tytul_TextChanged"/>
+        <TextBox x:Name="textBox_isbn" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_isbn_TextChanged"/>
+        <TextBox x:Name="textBox_gatunek" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_gatunek_TextChanged"/>
+        <TextBox x:Name="textBox_rokwyd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_rokwyd_TextChanged"/>
+        <TextBox x:Name="textBox_uwagi" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.RowSpan="2" TextChanged="textBox_uwagi_TextChanged"/>
+
     </Grid>
 </Window>
