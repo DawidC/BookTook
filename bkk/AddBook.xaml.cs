@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Finisar.SQLite;
 
-namespace BookTook
+namespace Książkotok
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
@@ -38,9 +38,12 @@ namespace BookTook
             
             sqlite_cmd = sqlite_conn.CreateCommand();
 
-            //sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
-           
+            // Let the SQLiteCommand object know our SQL-Query:
+            //sqlite_cmd.CommandText = "CREATE TABLE Ksiazki (Id integer primary key, Autor varchar(100), Tytul varchar(100), ISBN varchar(100), Gatunek varchar(100), RokWyd integer, Uwagi varchar(100));";
 
+            // Now lets execute the SQL ;D
+            // sqlite_cmd.ExecuteNonQuery();
+            
             string wej="";
             string przerwa = "', '";
             string pocz = "INSERT INTO Ksiazki (Autor, Tytul, ISBN, Gatunek, RokWyd, Uwagi) VALUES ('";
@@ -127,11 +130,6 @@ namespace BookTook
         }
 
         private void textBox_uwagi_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Finisar.SQLite;
 
-namespace BookTook
+namespace Książkotok
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -29,8 +29,7 @@ namespace BookTook
         {
             InitializeComponent();
             wyswietl();
-            SQL a = new SQL();
-
+            
         }
 
         public void wyswietl()
@@ -44,12 +43,6 @@ namespace BookTook
             sqlite_conn.Open();
 
             sqlite_cmd = sqlite_conn.CreateCommand();
-
-            // Let the SQLiteCommand object know our SQL-Query:
-           // sqlite_cmd.CommandText = "CREATE TABLE Ksiazki (Id integer primary key, Autor varchar(100), Tytul varchar(100), ISBN varchar(100), Gatunek varchar(100), RokWyd integer, Uwagi varchar(100));";
-
-            // Now lets execute the SQL ;D
-           // sqlite_cmd.ExecuteNonQuery();
 
             sqlite_cmd.CommandText = "SELECT * FROM Ksiazki";
 
@@ -69,9 +62,8 @@ namespace BookTook
                 string dataRokwyd = sqlite_datareader.GetString(5);
                 string dataUwagi = sqlite_datareader.GetString(6);
                 // MessageBox.Show(data);
-                
-                items.Add(new Book() { Id = dataId, Autor = dataAutor, Tytul = dataTytul, ISBN = dataISBN, Rokwyd = dataRokwyd, Uwagi = dataUwagi, Gatunek = dataGatunek });
-                //items.Add(new Book() { Id = "1", Autor = "AA", Tytul = "AA", ISBN = "AA", Rokwyd = "1223", Uwagi = "AA", Gatunek = "AA" });
+                items.Add(new Book() { Id = dataId, Autor = dataAutor, Tytul = dataTytul, ISBN = dataISBN, Gatunek = dataGatunek, Rokwyd = dataRokwyd, Uwagi = dataUwagi });
+
             }
             lvBooks.ItemsSource = items;
             sqlite_conn.Close();
