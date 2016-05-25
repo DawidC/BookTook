@@ -19,6 +19,7 @@ namespace BookTook
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// SingletonSecured.Instance.DoSomething();
     public partial class MainWindow : Window
     {
         
@@ -29,7 +30,7 @@ namespace BookTook
         {
             InitializeComponent();
             wyswietl();
-            SQL a = new SQL();
+           // SingletonWithoutLocks.Instance.DBConnect();
 
         }
 
@@ -45,11 +46,9 @@ namespace BookTook
 
             sqlite_cmd = sqlite_conn.CreateCommand();
 
-            // Let the SQLiteCommand object know our SQL-Query:
-           // sqlite_cmd.CommandText = "CREATE TABLE Ksiazki (Id integer primary key, Autor varchar(100), Tytul varchar(100), ISBN varchar(100), Gatunek varchar(100), RokWyd integer, Uwagi varchar(100));";
+            //sqlite_cmd.CommandText = "CREATE TABLE Ksiazki (Id integer primary key, Autor varchar(100), Tytul varchar(100), ISBN varchar(100), Gatunek varchar(100), RokWyd integer, Uwagi varchar(100), DataWyp varchar(100), DataOdd varchar(100), Img varchar(100));";
+            //sqlite_cmd.ExecuteNonQuery();
 
-            // Now lets execute the SQL ;D
-           // sqlite_cmd.ExecuteNonQuery();
 
             sqlite_cmd.CommandText = "SELECT * FROM Ksiazki";
 

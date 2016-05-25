@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -21,21 +22,25 @@ namespace BookTook
     /// </summary>
     public partial class AddBook : Window
     {
+
         public AddBook()
         {
             InitializeComponent();
+           // SingletonWithoutLocks.Instance.DBConnect();
+            
 
         }
 
         private void button_add_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteConnection sqlite_conn;
-            SQLiteCommand sqlite_cmd;
-            SQLiteDataReader sqlite_datareader;
-            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=True;");
-            
-            sqlite_conn.Open();
-            
+
+           // SQLiteConnection sqlite_conn;
+           // SQLiteCommand sqlite_cmd;
+            //SQLiteDataReader sqlite_datareader;
+            SingletonWithoutLocks.Instance.DBConnect();
+            SingletonWithoutLocks.Instance.DBConnOpen();
+            // sqlite_conn.Open();
+/*
             sqlite_cmd = sqlite_conn.CreateCommand();
 
             //sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
@@ -45,7 +50,7 @@ namespace BookTook
             string przerwa = "', '";
             string pocz = "INSERT INTO Ksiazki (Autor, Tytul, ISBN, Gatunek, RokWyd, Uwagi) VALUES ('";
             string koniec = "');";
-            wej = pocz + textBox_autor.Text + przerwa + textBox_tytul.Text + przerwa + textBox_isbn.Text + przerwa + textBox_gatunek.Text + przerwa + textBox_rokwyd.Text + przerwa +
+            wej = pocz + textBox_autor.Text + przerwa + textBox_tytul.Text + przerwa + textBox_isbn.Text + przerwa + comboBox.Text + przerwa + textBox_rokwyd.Text + przerwa +
                   textBox_uwagi.Text + koniec;
 
 
