@@ -5,14 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookTook"
         mc:Ignorable="d"
-        Title="BookTook" Height="528.86" Width="806.875">
+        Title="BookTook" Height="890.275" Width="1199.79">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="441*" />
-            <ColumnDefinition Width="260*"/>
-            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="289*" />
+            <ColumnDefinition Width="304*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="lvBooks" HorizontalAlignment="Left" Height="322" Margin="10,47,0,0" VerticalAlignment="Top" Width="350" SelectionChanged="listView_SelectionChanged" ItemsSource="{Binding Path=Friends, Mode=OneWay}">
+        <Image x:Name="booktooktlo_jpg" Grid.ColumnSpan="3" Source="booktooktlo.jpg" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <Rectangle Fill="#FF252526" Height="31" Margin="0,18,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+
+        <ListView x:Name="lvBooks" HorizontalAlignment="Left" Height="322" Margin="25,249,0,0" VerticalAlignment="Top" Width="510" SelectionChanged="listView_SelectionChanged" ItemsSource="{Binding Friends, Mode=OneWay}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"  />
@@ -25,10 +29,18 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label" Content="Książki" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="60,16,0,0" Click="button_Click"/>
-        <Button x:Name="button_odswiez" Content="Odśwież" HorizontalAlignment="Left" Margin="140,16,0,0" VerticalAlignment="Top" Width="75" Click="button_odswiez_Click"/>
-        <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="100" Margin="402,162,0,0" VerticalAlignment="Top" Width="6" Background="#FFCF1717"/>
+        <Image x:Name="booktooklogobiale_png" Margin="27,21,0,0" Source="booktooklogobiale.png" Stretch="Fill" Width="174" Height="29" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="button" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="27,207,0,0" Click="button_Click" Height="20"/>
+        <Button x:Name="button_odswiez" Content="Odśwież" HorizontalAlignment="Left" Margin="107,207,0,0" VerticalAlignment="Top" Width="75" Click="button_odswiez_Click" Height="20"/>
+        <Label x:Name="label" Content="Lista książek" Margin="27,54,43,0" VerticalAlignment="Top" FontFamily="Helvetica Neue LT Pro" Foreground="White" FontSize="40" FontWeight="ExtraBold" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="textBox_Copy" Height="23" Margin="26,145,44,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="758" Margin="7,75,0,0" VerticalAlignment="Top" Width="3" Background="White" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Padding="0"/>
+
+
+
+
+        <Label x:Name="label_Copy" Content="Użytkownicy" Margin="61,54,39,0" FontFamily="Helvetica Neue LT Pro" Foreground="White" FontSize="40" FontWeight="ExtraBold" Grid.Column="1" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Copy1" Height="23" Margin="61,145,39,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Grid.Column="1"/>
 
     </Grid>
 </Window>

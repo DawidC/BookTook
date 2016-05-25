@@ -37,7 +37,7 @@
   <ItemGroup>
     <Reference Include="SQLite.NET, Version=0.21.1869.3794, Culture=neutral, PublicKeyToken=c273bd375e695f9c">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\SQLite.NET.dll</HintPath>
+      <HintPath>..\..\..\Visual Studio\juliaserwis\juliaserwis\bin\Debug\SQLite.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -107,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="booktooktlo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="booktooklogobiale.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
