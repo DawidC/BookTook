@@ -15,6 +15,10 @@ namespace BookTook
         public string Gatunek { get; set; }
         public string Rokwyd { get; set; } //int
         public string Uwagi { get; set; }
+        public string DataWyp { get; set; }
+        public string DataOdd { get; set; }
+        public string Status { get; set; }
+        public string Flaga { get; set; }
 
     }
 }

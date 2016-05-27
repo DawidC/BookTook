@@ -20,12 +20,38 @@ namespace BookTook
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class AddBook : Window
+    public partial class EditBook : Window
     {
-
-        public AddBook()
+        public EditBook()
         {
             InitializeComponent();
+
+        }
+
+        string index;
+        public EditBook(int n)
+        {
+            InitializeComponent();
+            string[] ciag= new string[n+1];
+            int licznik = 0;
+            SingletonWithoutLocks.Instance.DBCounter(n, ref ciag, ref licznik);
+            index = ciag[n];
+
+            string Autor = "";
+            string Tytul = "";
+            string ISBN = "";
+            string Gatunek = "";
+            string RokWyd = "";
+            string Uwagi = "";
+            string Flaga = "";
+            SingletonWithoutLocks.Instance.DBEdit(index, ref Autor, ref Tytul, ref ISBN, ref Gatunek, ref RokWyd, ref Uwagi, ref Flaga);
+            textBox_autor.Text = Autor;
+            textBox_tytul.Text = Tytul;
+            textBox_isbn.Text = ISBN;
+            comboBox.Text = Gatunek;
+            textBox_rokwyd.Text = RokWyd;
+            textBox_uwagi.Text = Uwagi;
+            
 
         }
         private bool IsNumeric(object ValueToCheck)
@@ -36,33 +62,34 @@ namespace BookTook
         private void button_add_Click(object sender, RoutedEventArgs e)
         {
             string wej = "";
-            string przerwa = "', '";
-            string pocz = "INSERT INTO Ksiazki (Autor, Tytul, ISBN, Gatunek, RokWyd, Uwagi, Flaga) VALUES ('";
-            string koniec = "');";
+            string pocz = "UPDATE Ksiazki SET ";
             int rokwyd;
-            bool result = Int32.TryParse(textBox_rokwyd.Text,out rokwyd);
+            bool result = Int32.TryParse(textBox_rokwyd.Text, out rokwyd);
             DateTime date1 = DateTime.Now;
 
             if (textBox_autor.Text == "" || textBox_tytul.Text == "" || textBox_isbn.Text == "" ||
                 textBox_rokwyd.Text == "" || comboBox.Text == "")
             {
                 MessageBox.Show("Wypełnij wszystkie pola!");
-            } else if (!result)
+            }
+            else if (!result)
             {
                 label_zladata.Content = "Zły rok!";
-            } else if (rokwyd > date1.Year)
+            }
+            else if (rokwyd > date1.Year)
             {
                 label_zladata.Content = "Zły rok!";
             }
             else
             {
-                wej = pocz + textBox_autor.Text + przerwa + textBox_tytul.Text + przerwa + textBox_isbn.Text + przerwa +
-                      comboBox.Text + przerwa + textBox_rokwyd.Text + przerwa +
-                      textBox_uwagi.Text + przerwa + "1" +koniec;
+                wej = pocz + "Autor = '" + textBox_autor.Text + "', Tytul = '" + textBox_tytul.Text + "', ISBN = '" +
+                      textBox_isbn.Text + "', Gatunek = '" +
+                      comboBox.Text + "', Rokwyd = '" + textBox_rokwyd.Text + "', Uwagi ='" +
+                      textBox_uwagi.Text + "' WHERE Id = " + index + ";";
 
                 SingletonWithoutLocks.Instance.DBCommand(wej);
 
-                MessageBox.Show("Wpis dodany !");
+                MessageBox.Show("Zapisano!");
                 textBox_autor.Text = "";
                 textBox_tytul.Text = "";
                 textBox_isbn.Text = "";
@@ -71,6 +98,23 @@ namespace BookTook
                 textBox_uwagi.Text = "";
                 label_zladata.Content = "";
             }
+            sender = "o";
+        }
+
+        private void button_usun_Click(object sender, RoutedEventArgs e)
+        {
+            string wej = "UPDATE Ksiazki SET Flaga = '0' WHERE Id = " + index +";";
+            
+            SingletonWithoutLocks.Instance.DBCommand(wej);
+
+            MessageBox.Show("Usunięto!");
+            textBox_autor.Text = "";
+            textBox_tytul.Text = "";
+            textBox_isbn.Text = "";
+            textBox_rokwyd.Text = "";
+            comboBox.Text = "";
+            textBox_uwagi.Text = "";
+            label_zladata.Content = "";
             
         }
 
@@ -103,5 +147,6 @@ namespace BookTook
         {
 
         }
+
     }
 }
