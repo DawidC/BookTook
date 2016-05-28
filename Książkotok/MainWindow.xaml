@@ -44,8 +44,24 @@
 
 
         <Label x:Name="label_Copy" Content="Użytkownicy" Margin="61,54,39,0" FontFamily="Helvetica Neue LT Pro" Foreground="White" FontSize="40" FontWeight="ExtraBold" Grid.Column="1" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Copy1" Height="23" Margin="61,145,39,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="textBox_Copy1" Height="23" Margin="61,145,39,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Grid.Column="1" PreviewMouseDown="TextBox1_Copy_OnPreviewMouseDown" TextChanged="textBox_Copy1_TextChanged"/>
         <Button x:Name="button_szukaj" Content="Szukaj" HorizontalAlignment="Left" Margin="414,145,0,0" VerticalAlignment="Top" Width="76" Click="button_szukaj_Click"/>
+        <Button x:Name="button_userAdd" Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="61,207,0,0" VerticalAlignment="Top" Width="75" Click="button_userAdd_Click"/>
+        <ListView x:Name="lvUsers" Grid.Column="1" HorizontalAlignment="Left" Height="322" Margin="61,249,0,0" VerticalAlignment="Top" Width="508" MouseDoubleClick="Lvusers_OnMouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Imie" DisplayMemberBinding="{Binding Imie}"  />
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Nazwisko}"  />
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"  />
+                    <GridViewColumn Header="Telefon" DisplayMemberBinding="{Binding Telefon}"  />
+                    <GridViewColumn Header="Typ Konta" DisplayMemberBinding="{Binding TypKonta}"  />
+                    <GridViewColumn Header="Ilość Książek" DisplayMemberBinding="{Binding IloscKsiazek}"  />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="button1_odswiez" Content="Odśwież" Grid.Column="1" HorizontalAlignment="Left" Margin="141,207,0,0" VerticalAlignment="Top" Width="75" Click="button1_odswiez_Click"/>
+        <Button x:Name="button1_szukaj" Content="Szukaj" Grid.Column="1" HorizontalAlignment="Left" Margin="424,145,0,0" VerticalAlignment="Top" Width="76" Click="button1_szukaj_Click"/>
 
     </Grid>
 </Window>

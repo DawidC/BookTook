@@ -26,18 +26,27 @@ namespace BookTook
         public MainWindow()
         {
             InitializeComponent();
+            
             wyswietl();
+            wyswietlU();
 
         }
        
         public void wyswietl()
         {
             List<Book> items = new List<Book>();
-            string tabl = "";
             SingletonWithoutLocks.Instance.DBDataReaderBooks(items);
             
             lvBooks.ItemsSource = items;
 
+        }
+
+        public void wyswietlU()
+        {
+            List<User> items = new List<User>();
+            SingletonWithoutLocks.Instance.DBDataReaderUsers(items);
+
+            lvUsers.ItemsSource = items;
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -99,27 +108,87 @@ namespace BookTook
             
         }
 
+        int y = 0;
+        private void TextBox1_Copy_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (y == 0)
+            {
+                textBox_Copy1.Text = string.Empty;
+                y++;
+            }
+        }
+
         private void LvBooks_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (lvBooks.SelectedItem != null)
             {
                 int n = lvBooks.SelectedIndex;
-
-                EditBook aa = new EditBook(n);
+                EditBook aa = new EditBook(n, textBox_Copy);
 
                 aa.Show();
             }
         }
+
+        private void Lvusers_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lvUsers.SelectedItem != null)
+            {
+                int n = lvUsers.SelectedIndex;
+                EditUser a = new EditUser(n, textBox_Copy1);
+                a.Show();
+
+            }
+        }
+
         void window_Deactivated(object sender, EventArgs e)
         {
-            wyswietl();
+           //wyswietl();
             
         }
 
         void window_Activated(object sender, EventArgs e)
         {
-            wyswietl();
+           //wyswietl();
 
+        }
+
+        private void button_userAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddUser a = new AddUser();
+            a.Show();
+        }
+
+        private void button1_odswiez_Click(object sender, RoutedEventArgs e)
+        {
+            wyswietlU();
+        }
+
+        private void button1_szukaj_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBox_Copy1.Text == "" || textBox_Copy1.Text == "Szukaj")
+            {
+                wyswietl();
+            }
+            else
+            {
+                List<User> items = new List<User>();
+                SingletonWithoutLocks.Instance.DBSearchUser(textBox_Copy1.Text, items);
+                lvUsers.ItemsSource = items;
+            }
+        }
+
+        private void textBox_Copy1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (textBox_Copy1.Text == "" || textBox_Copy1.Text == "Szukaj")
+            {
+                wyswietl();
+            }
+            else
+            {
+                List<User> items = new List<User>();
+                SingletonWithoutLocks.Instance.DBSearchUser(textBox_Copy1.Text, items);
+                lvUsers.ItemsSource = items;
+            }
         }
     }
 }

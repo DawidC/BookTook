@@ -28,14 +28,23 @@ namespace BookTook
 
         }
 
+        public string tmpn = "";
         string index;
-        public EditBook(int n)
+        public EditBook(int n, TextBox tmp)
         {
             InitializeComponent();
             string[] ciag= new string[n+1];
             int licznik = 0;
-            SingletonWithoutLocks.Instance.DBCounter(n, ref ciag, ref licznik);
-            index = ciag[n];
+            SingletonWithoutLocks.Instance.DBCounter(n, ref ciag, ref licznik, "Ksiazki",10);
+            tmpn = n.ToString();
+            if (tmp.Text == ""||tmp.Text=="Szukaj")
+            {
+                index = ciag[n];
+            }
+            else
+            {
+                index = SingletonWithoutLocks.Instance.listId[n];
+            }
 
             string Autor = "";
             string Tytul = "";
@@ -98,7 +107,6 @@ namespace BookTook
                 textBox_uwagi.Text = "";
                 label_zladata.Content = "";
             }
-            sender = "o";
         }
 
         private void button_usun_Click(object sender, RoutedEventArgs e)
