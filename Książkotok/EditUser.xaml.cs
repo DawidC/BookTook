@@ -61,16 +61,20 @@ namespace BookTook
 
         private void button_usun_Click(object sender, RoutedEventArgs e)
         {
-            string wej = "UPDATE Uzytkownicy SET Flaga = '0' WHERE Id = " + index + ";";
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Czy napewno chcesz usunąć", "Potwierdzenie usunięcia", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                string wej = "UPDATE Uzytkownicy SET Flaga = '0' WHERE Id = " + index + ";";
 
-            SingletonWithoutLocks.Instance.DBCommand(wej);
+                SingletonWithoutLocks.Instance.DBCommand(wej);
 
-            MessageBox.Show("Usunięto!");
-            textBoximie.Text = "";
-            textBoxnazwisko.Text = "";
-            textBoxemail.Text = "";
-            textBoxtelefon.Text = "";
-            comboBoxtypkonta.Text = "";
+                MessageBox.Show("Usunięto!");
+                textBoximie.Text = "";
+                textBoxnazwisko.Text = "";
+                textBoxemail.Text = "";
+                textBoxtelefon.Text = "";
+                comboBoxtypkonta.Text = "";
+            }
         }
 
         private void button_zapisz_Click(object sender, RoutedEventArgs e)

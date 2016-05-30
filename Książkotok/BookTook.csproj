@@ -78,6 +78,9 @@
     <Compile Include="KartaKsiazkiWypozycz.xaml.cs">
       <DependentUpon>KartaKsiazkiWypozycz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KartaUzytkownika.xaml.cs">
+      <DependentUpon>KartaUzytkownika.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Singleton.cs" />
     <Compile Include="User.cs" />
     <Page Include="EditUser.xaml">
@@ -97,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="KartaKsiazkiWypozycz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KartaUzytkownika.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

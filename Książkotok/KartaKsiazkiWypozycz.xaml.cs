@@ -96,11 +96,13 @@ namespace BookTook
             //index <- index książki
             //index2 <- index usera
             string data = date1.Day + "." + date1.Month + "." + date1.Year;
-            string lp = "";
+            string lp="";
+            MessageBox.Show(index);
             SingletonWithoutLocks.Instance.DBLastLpAll(ref lp, "KartaKsiazki",index);
             int booklp = Convert.ToInt32(lp);
             booklp++;
-            SingletonWithoutLocks.Instance.DBCommand("INSERT INTO KartaKsiazki(BookId, BookLp, DataWyp, DataOdd, UId) VALUES('"+index+"', '"+booklp +"', '"+data+"', '0', '"+index2+"'); ");
+            MessageBox.Show(booklp.ToString());
+            // SingletonWithoutLocks.Instance.DBCommand("INSERT INTO KartaKsiazki(BookId, BookLp, DataWyp, DataOdd, UId) VALUES('"+index+"', '"+booklp +"', '"+data+"', '0', '"+index2+"'); ");
 
         }
     }

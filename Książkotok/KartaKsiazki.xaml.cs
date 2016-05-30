@@ -130,6 +130,8 @@ namespace BookTook
             label_isbn.Content = bookisbn;
             label_gatunek.Content = bookgatunek;
             label_rokwyd.Content = bookrokwyd;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Ascending));
         }
 
         private void KartaKsiazki_OnActivated(object sender, EventArgs e)
@@ -177,6 +179,8 @@ namespace BookTook
             label_isbn.Content = bookisbn;
             label_gatunek.Content = bookgatunek;
             label_rokwyd.Content = bookrokwyd;
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Ascending));
         }
 
         DateTime date1 = DateTime.Now;
