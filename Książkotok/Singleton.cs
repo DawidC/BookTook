@@ -56,6 +56,23 @@ namespace BookTook
             DBConnClose();
         }
 
+        public void DBLastElement(ref string index, string tabela)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "SELECT * FROM "+tabela;
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                index = sqlite_datareader.GetString(0);
+            }
+
+            sqlite_conn.Close();
+        }
+
         public void DBDataReaderBooks(List<Book> items)
         {
 
@@ -131,7 +148,69 @@ namespace BookTook
             sqlite_conn.Close();
         }
 
-        
+        public void DBKK(int n, ref string BookId, ref string BookAutor, ref string UserId, ref string BookLp, ref string DataWyp, ref string DataOdd, ref string BookTytul,
+            ref string BookISBN, ref string BookGatunek, ref string BookRokWyd, ref string BookUwagi, List<ClassKK> items)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "SELECT * FROM Uzytkownicy, KartaKsiazki, Ksiazki WHERE KartaKsiazki.UId=Uzytkownicy.Id AND KartaKsiazki.BookId = Ksiazki.Id AND Ksiazki.Id = " + n;
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+            while (sqlite_datareader.Read())
+            {
+                UserId = sqlite_datareader.GetString(0);
+                string UserImie = sqlite_datareader.GetString(1);
+                string UserNazwisko = sqlite_datareader.GetString(2);
+               // email (3)
+               // telefon (4)
+               //typkonta (5)
+               //iloscksiazek (6)
+                string UserFlaga = sqlite_datareader.GetString(7);
+                string BazaId = sqlite_datareader.GetString(8);
+                BookId = sqlite_datareader.GetString(9);
+                BookLp = sqlite_datareader.GetString(10);
+                DataWyp = sqlite_datareader.GetString(11);
+                DataOdd = sqlite_datareader.GetString(12);
+                // uid z bazy 13
+               // z bazy string BookId = sqlite_datareader.GetString() 14
+                BookAutor = sqlite_datareader.GetString(15);
+                BookTytul = sqlite_datareader.GetString(16);
+                BookISBN = sqlite_datareader.GetString(17);
+                BookGatunek = sqlite_datareader.GetString(18);
+                BookRokWyd = sqlite_datareader.GetString(19);
+                BookUwagi = sqlite_datareader.GetString(20);
+                //data wyp 21
+                //data odd 22
+                //status 23
+                string BookFlaga = sqlite_datareader.GetString(24);
+                //user id (25)
+
+                if (UserFlaga == "1" && BookFlaga == "1")
+                {
+                    items.Add(new ClassKK() {Lp = BookLp, DataWyp = DataWyp, DataOdd = DataOdd, UId = UserId, Imie = UserImie, Nazwisko = UserNazwisko});
+                }
+
+
+            }
+
+
+            sqlite_conn.Close();
+        }
+
+        public void DBCreateKK()
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            //ksiazki
+            sqlite_cmd.CommandText = "CREATE TABLE KartaKsiazki (Id integer primary key, BookId integer, BookLp integer, DataWyp varchar(100), DataOdd varchar(100), UId integer);";
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_conn.Close();
+        }
 
         public void DBCounter(int n, ref string[] ciag, ref int licznik, string table, int flagaid)
         {
@@ -153,6 +232,40 @@ namespace BookTook
                 }
             }
             DBConnClose();
+        }
+
+        public void DBLastLpAll(ref string lp, string tabela, string bookid)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "SELECT * FROM " + tabela +";";
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                lp = sqlite_datareader.GetString(2);
+            }
+
+            sqlite_conn.Close();
+        }
+
+        public void DBLastLp(ref string lp, string tabela, string bookid, string column)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "SELECT * FROM " + tabela + " WHERE BookId = " + bookid + ";";
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                lp = sqlite_datareader.GetString(2);
+            }
+
+            sqlite_conn.Close();
         }
 
         public void DBEdit(string index, ref string Autor, ref string Tytul, ref string ISBN, ref string Gatunek, ref string RokWyd, ref string Uwagi, ref string Flaga)

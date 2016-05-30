@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassKK.cs" />
     <Compile Include="EditUser.xaml.cs">
       <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
@@ -70,6 +71,12 @@
     </Compile>
     <Compile Include="AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KartaKsiazki.xaml.cs">
+      <DependentUpon>KartaKsiazki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KartaKsiazkiWypozycz.xaml.cs">
+      <DependentUpon>KartaKsiazkiWypozycz.xaml</DependentUpon>
     </Compile>
     <Compile Include="Singleton.cs" />
     <Compile Include="User.cs" />
@@ -84,6 +91,14 @@
     <Page Include="EditBook.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="KartaKsiazki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KartaKsiazkiWypozycz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -123,6 +123,8 @@ namespace BookTook
             comboBox.Text = "";
             textBox_uwagi.Text = "";
             label_zladata.Content = "";
+
+            Close();
             
         }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -16,13 +17,8 @@ using Finisar.SQLite;
 
 namespace BookTook
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// SingletonSecured.Instance.DoSomething();
     public partial class MainWindow : Window
     {
-        
         public MainWindow()
         {
             InitializeComponent();
@@ -120,25 +116,22 @@ namespace BookTook
 
         private void LvBooks_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (lvBooks.SelectedItem != null)
-            {
-                int n = lvBooks.SelectedIndex;
-                EditBook aa = new EditBook(n, textBox_Copy);
+            int n = lvBooks.SelectedIndex;
+            KartaKsiazki aa = new KartaKsiazki(n, textBox_Copy);
 
-                aa.Show();
-            }
+
+
+            aa.Show();
         }
+
+        
 
         private void Lvusers_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (lvUsers.SelectedItem != null)
-            {
-                int n = lvUsers.SelectedIndex;
-                EditUser a = new EditUser(n, textBox_Copy1);
-                a.Show();
-
-            }
+            
         }
+
+
 
         void window_Deactivated(object sender, EventArgs e)
         {
@@ -188,6 +181,28 @@ namespace BookTook
                 List<User> items = new List<User>();
                 SingletonWithoutLocks.Instance.DBSearchUser(textBox_Copy1.Text, items);
                 lvUsers.ItemsSource = items;
+            }
+        }
+
+        private void button_edytuj_book_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvBooks.SelectedItem != null)
+            {
+                int n = lvBooks.SelectedIndex;
+                EditBook aa = new EditBook(n, textBox_Copy);
+
+                aa.Show();
+            }
+        }
+
+        private void button_edytuj_user_Click(object sender, RoutedEventArgs e)
+        {
+            if (lvUsers.SelectedItem != null)
+            {
+                int n = lvUsers.SelectedIndex;
+                EditUser a = new EditUser(n, textBox_Copy1);
+                a.Show();
+
             }
         }
     }
