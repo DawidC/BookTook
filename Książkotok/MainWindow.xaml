@@ -29,8 +29,6 @@
                     <GridViewColumn Header="Gatunek" DisplayMemberBinding="{Binding Gatunek}" />
                     <GridViewColumn Header="Rok wydania" DisplayMemberBinding="{Binding Rokwyd}" />
                     <GridViewColumn Header="Uwagi" DisplayMemberBinding="{Binding Uwagi}" />
-                    <GridViewColumn Header="DataWyp" DisplayMemberBinding="{Binding DataWyp}" />
-                    <GridViewColumn Header="DataOdd" DisplayMemberBinding="{Binding DataOdd}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -39,14 +37,20 @@
         <Button x:Name="button_odswiez" Content="Odśwież" HorizontalAlignment="Left" Margin="39,207,0,0" VerticalAlignment="Top" Width="75" Click="button_odswiez_Click" Height="20" Grid.Column="1"/>
         <Label x:Name="label" Content="Lista książek" Margin="27,54,43,0" VerticalAlignment="Top" FontFamily="Helvetica Neue LT Pro" Foreground="White" FontSize="40" FontWeight="ExtraBold" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
         <TextBox x:Name="textBox_Copy" Height="23" Margin="26,145,44,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" TextChanged="textBox_Copy_TextChanged" PreviewMouseDown="TextBox_Copy_OnPreviewMouseDown" Grid.ColumnSpan="2"/>
+        <Button x:Name="button_szukaj" HorizontalAlignment="Left" Margin="440,145,0,0" VerticalAlignment="Top" Width="26" Click="button_szukaj_Click" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Grid Height="21" Width="23">
+                <Image x:Name="lupa_png1" Source="lupa.png" Stretch="Fill"/>
+            </Grid>
+        </Button>
         <GridSplitter x:Name="gridSplitter" HorizontalAlignment="Left" Height="758" Margin="7,75,0,0" VerticalAlignment="Top" Width="3" Background="White" RenderTransformOrigin="0.5,0.5" Grid.Column="2" Padding="0"/>
 
 
 
 
         <Label x:Name="label_Copy" Content="Użytkownicy" Margin="61,54,39,0" FontFamily="Helvetica Neue LT Pro" Foreground="White" FontSize="40" FontWeight="ExtraBold" Grid.Column="2" HorizontalContentAlignment="Center" VerticalAlignment="Top"/>
+        
         <TextBox x:Name="textBox_Copy1" Height="23" Margin="61,145,39,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Grid.Column="2" PreviewMouseDown="TextBox1_Copy_OnPreviewMouseDown" TextChanged="textBox_Copy1_TextChanged"/>
-        <Button x:Name="button_szukaj" Content="Szukaj" HorizontalAlignment="Left" Margin="346,145,0,0" VerticalAlignment="Top" Width="76" Click="button_szukaj_Click" Grid.Column="1"/>
+        
         <Button x:Name="button_userAdd" Content="Dodaj" Grid.Column="2" HorizontalAlignment="Left" Margin="61,207,0,0" VerticalAlignment="Top" Width="75" Click="button_userAdd_Click"/>
         <ListView x:Name="lvUsers" Grid.Column="2" HorizontalAlignment="Left" Height="322" Margin="61,249,0,0" VerticalAlignment="Top" Width="508" MouseDoubleClick="Lvusers_OnMouseDoubleClick">
             <ListView.View>
@@ -62,7 +66,11 @@
             </ListView.View>
         </ListView>
         <Button x:Name="button1_odswiez" Content="Odśwież" Grid.Column="2" HorizontalAlignment="Left" Margin="141,207,0,0" VerticalAlignment="Top" Width="75" Click="button1_odswiez_Click"/>
-        <Button x:Name="button1_szukaj" Content="Szukaj" Grid.Column="2" HorizontalAlignment="Left" Margin="424,145,0,0" VerticalAlignment="Top" Width="76" Click="button1_szukaj_Click"/>
+        <Button x:Name="button1_szukaj" Grid.Column="2" HorizontalAlignment="Left" Margin="538,145,0,0" VerticalAlignment="Top" Width="31" Click="button1_szukaj_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Grid Height="18" Width="18">
+                <Image x:Name="lupa_png" Source="lupa.png"/>
+            </Grid>
+        </Button>
         <Button x:Name="button_edytuj_book" Content="Edytuj" Grid.Column="1" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.32,0.75" Click="button_edytuj_book_Click"/>
         <Button x:Name="button_edytuj_user" Content="Edytuj" Grid.Column="2" HorizontalAlignment="Left" Margin="221,207,0,0" VerticalAlignment="Top" Width="75" Click="button_edytuj_user_Click"/>
 

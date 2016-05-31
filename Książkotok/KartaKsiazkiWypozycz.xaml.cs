@@ -71,39 +71,55 @@ namespace BookTook
         string index2="";
         private void button_wypozycz_Click(object sender, RoutedEventArgs e)
         {
-            if (listView.SelectedItem == null)
+            string data = date1.Day + "." + date1.Month + "." + date1.Year;
+            string lp = "";
+            // MessageBox.Show(index);
+            int fl = 0;
+            SingletonWithoutLocks.Instance.DBLastLp(ref lp, "KartaKsiazki", index, "BookId", ref fl);
+            int booklp = Convert.ToInt32(lp);
+            booklp++;
+            if (fl == 2)
             {
-                MessageBox.Show("Wybierz osobę z listy!");
-            }
-            else
-            {
-                int l = listView.SelectedIndex;
-                string[] ciag = new string[l + 1];
-                int licznik = 0;
 
-                SingletonWithoutLocks.Instance.DBCounter(l, ref ciag, ref licznik, "Uzytkownicy", 7);
-                
-                if (textBox.Text == "" || textBox.Text == "Szukaj")
+                if (listView.SelectedItem == null)
                 {
-                    index2 = ciag[l];
+                    MessageBox.Show("Wybierz osobę z listy!");
                 }
                 else
                 {
-                    index2 = SingletonWithoutLocks.Instance.listId[l];
+                    int l = listView.SelectedIndex;
+                    string[] ciag = new string[l + 1];
+                    int licznik = 0;
+
+                    SingletonWithoutLocks.Instance.DBCounter(l, ref ciag, ref licznik, "Uzytkownicy", 7);
+
+                    if (textBox.Text == "" || textBox.Text == "Szukaj")
+                    {
+                        index2 = ciag[l];
+                    }
+                    else
+                    {
+                        index2 = SingletonWithoutLocks.Instance.listId[l];
+                    }
+
+                    //index <- index książki
+                    //index2 <- index usera
+
+                    // MessageBox.Show(fl.ToString());
+                    SingletonWithoutLocks.Instance.DBCommand(
+                        "INSERT INTO KartaKsiazki(BookId, BookLp, DataWyp, DataOdd, UId) VALUES('" + index + "', '" +
+                        booklp + "', '" + data + "', '0', '" + index2 + "'); ");
+                    MessageBox.Show("Wypożyczono!");
+                    Close();
                 }
             }
-
-            //index <- index książki
-            //index2 <- index usera
-            string data = date1.Day + "." + date1.Month + "." + date1.Year;
-            string lp="";
-            MessageBox.Show(index);
-            SingletonWithoutLocks.Instance.DBLastLpAll(ref lp, "KartaKsiazki",index);
-            int booklp = Convert.ToInt32(lp);
-            booklp++;
-            MessageBox.Show(booklp.ToString());
-            // SingletonWithoutLocks.Instance.DBCommand("INSERT INTO KartaKsiazki(BookId, BookLp, DataWyp, DataOdd, UId) VALUES('"+index+"', '"+booklp +"', '"+data+"', '0', '"+index2+"'); ");
-
-        }
+            else
+            {
+                MessageBox.Show("Musisz najpierw zwrócić książkę!");
+            }
+            //MessageBox.Show(fl.ToString());
+            }
     }
 }
+
+

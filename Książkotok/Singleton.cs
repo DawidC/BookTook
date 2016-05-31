@@ -29,6 +29,7 @@ namespace BookTook
         SQLiteConnection sqlite_conn;
         SQLiteCommand sqlite_cmd;
         SQLiteDataReader sqlite_datareader;
+        SQLiteDataReader sqlite_datareader1;
         public void DBConnect()
         {
             //MessageBox.Show("Polaczenie nr " + m_nCounter++);
@@ -75,14 +76,24 @@ namespace BookTook
 
         public void DBDataReaderBooks(List<Book> items)
         {
-
+            string dataDataWyp = "";
+            string dataDataOdd = "";
+            string lp = "*";
+            int licznik = 0;
+            DBLastLpAll2(ref lp, "Ksiazki", 0,ref licznik);
+            string[] tab = new string[licznik];
+            int li = 0;
+            DBCounter(licznik,ref tab, ref li, "Ksiazki", 10);
+            
+           
             DBConnOpen();
             sqlite_cmd = sqlite_conn.CreateCommand();
             sqlite_cmd.CommandText = "SELECT * FROM Ksiazki";
             sqlite_cmd.ExecuteNonQuery();
             sqlite_datareader = sqlite_cmd.ExecuteReader();
+           // 
             int i = 0;
-            while (sqlite_datareader.Read()) 
+            while (sqlite_datareader.Read())
             {
                 string dataId = sqlite_datareader.GetString(0);
                 string dataAutor = sqlite_datareader.GetString(1);
@@ -91,14 +102,27 @@ namespace BookTook
                 string dataGatunek = sqlite_datareader.GetString(4);
                 string dataRokwyd = sqlite_datareader.GetString(5);
                 string dataUwagi = sqlite_datareader.GetString(6);
-                string dataDataWyp = sqlite_datareader.GetString(7);
-                string dataDataOdd = sqlite_datareader.GetString(8);
+                //string dataDataWyp = sqlite_datareader.GetString(7);
+                // string dataDataOdd = sqlite_datareader.GetString(8);
                 string dataFlaga = sqlite_datareader.GetString(10);
-
                 if (dataFlaga == "1")
                 {
-                    items.Add(new Book() { Id = dataId, Autor = dataAutor, Tytul = dataTytul, ISBN = dataISBN, Rokwyd = dataRokwyd, Uwagi = dataUwagi, Gatunek = dataGatunek, DataWyp = dataDataWyp, DataOdd = dataDataOdd, Flaga = dataFlaga });
-                    
+
+                    //Instance.DBLastItem2("KartaKsiazki", tab[i], "BookId", ref dataDataWyp, ref dataDataOdd);
+                    items.Add(new Book()
+                    {
+                        Id = dataId,
+                        Autor = dataAutor,
+                        Tytul = dataTytul,
+                        ISBN = dataISBN,
+                        Rokwyd = dataRokwyd,
+                        Uwagi = dataUwagi,
+                        Gatunek = dataGatunek,
+                        DataWyp = dataDataWyp,
+                        DataOdd = dataDataOdd,
+                        Flaga = dataFlaga
+                    });
+                    i++;
                 }
             }
             DBConnClose();
@@ -148,7 +172,7 @@ namespace BookTook
             sqlite_conn.Close();
         }
 
-        public void DBKK(int n, ref string BookId, ref string BookAutor, ref string UserId, ref string BookLp, ref string DataWyp, ref string DataOdd, ref string BookTytul,
+        public void DBKK(int n, ref int BookId, ref string BookAutor, ref string UserId, ref int BookLp, ref string DataWyp, ref string DataOdd, ref string BookTytul,
             ref string BookISBN, ref string BookGatunek, ref string BookRokWyd, ref string BookUwagi, List<ClassKK> items)
         {
             sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
@@ -170,8 +194,8 @@ namespace BookTook
                //iloscksiazek (6)
                 string UserFlaga = sqlite_datareader.GetString(7);
                 string BazaId = sqlite_datareader.GetString(8);
-                BookId = sqlite_datareader.GetString(9);
-                BookLp = sqlite_datareader.GetString(10);
+                BookId = Convert.ToInt32(sqlite_datareader.GetString(9));
+                BookLp = Convert.ToInt32(sqlite_datareader.GetString(10));
                 DataWyp = sqlite_datareader.GetString(11);
                 DataOdd = sqlite_datareader.GetString(12);
                 // uid z bazy 13
@@ -192,13 +216,12 @@ namespace BookTook
                 {
                     items.Add(new ClassKK() {Lp = BookLp, DataWyp = DataWyp, DataOdd = DataOdd, UId = UserId, Imie = UserImie, Nazwisko = UserNazwisko});
                 }
-
-
             }
 
 
             sqlite_conn.Close();
         }
+
 
         public void DBCreateKK()
         {
@@ -250,20 +273,92 @@ namespace BookTook
 
             sqlite_conn.Close();
         }
-
-        public void DBLastLp(ref string lp, string tabela, string bookid, string column)
+        public void DBLastLpAll2(ref string lp, string tabela, int bookid, ref int licznik)
         {
             sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
             sqlite_conn.Open();
             sqlite_cmd = sqlite_conn.CreateCommand();
 
-            sqlite_cmd.CommandText = "SELECT * FROM " + tabela + " WHERE BookId = " + bookid + ";";
+            sqlite_cmd.CommandText = "SELECT * FROM " + tabela + ";";
             sqlite_cmd.ExecuteNonQuery();
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                lp = sqlite_datareader.GetString(2);
+                lp = sqlite_datareader.GetString(bookid);
+                if (sqlite_datareader.GetString(10) == "1")
+                {
+                    licznik++;
+                }
             }
+
+            sqlite_conn.Close();
+        }
+
+        public void DBLastLp(ref string lp, string tabela, string bookid, string column, ref int fl)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+           // MessageBox.Show(bookid);
+            sqlite_cmd.CommandText = "SELECT * FROM " + tabela + " WHERE "+column+" = " + bookid;
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            string wyp = "";
+            string odd = "";
+            while (sqlite_datareader.Read())
+            {
+                lp = sqlite_datareader.GetString(2);
+                wyp = sqlite_datareader.GetString(3);
+                odd = sqlite_datareader.GetString(4);
+            }
+            if (odd != "0")
+            {
+                fl = 2;
+            } else if (odd == "0")
+            {
+                fl = 1;
+            }
+
+            sqlite_conn.Close();
+        }
+
+        public void DBLastItem(string tabela, string id, string column, ref string wyp1, ref string odd1)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            // MessageBox.Show(bookid);
+            sqlite_cmd.CommandText = "SELECT * FROM " + tabela + " WHERE " + column + " = " + id;
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+               // lp = sqlite_datareader.GetString(2);
+                wyp1 = sqlite_datareader.GetString(3);
+                odd1 = sqlite_datareader.GetString(4);
+            }
+            
+
+            sqlite_conn.Close();
+        }
+
+        public void DBLastItem2(string tabela, string id, string column, ref string wyp1, ref string odd1)
+        {
+            sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
+            sqlite_conn.Open();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            // MessageBox.Show(bookid);
+            sqlite_cmd.CommandText = "SELECT DataWyp,DataOdd FROM " + tabela + " WHERE " + column + " = " + Convert.ToInt32(id);
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                // lp = sqlite_datareader.GetString(2);
+                wyp1 = sqlite_datareader.GetString(0);
+                odd1 = sqlite_datareader.GetString(1);
+                //MessageBox.Show(wyp1);
+            }
+
 
             sqlite_conn.Close();
         }

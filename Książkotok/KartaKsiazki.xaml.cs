@@ -29,12 +29,12 @@ namespace BookTook
             InitializeComponent();
             GlobalN = n;
             Globaltmp = tmp;
-            string bookid = "";
+            int bookid = 0;
             string bookautor = "";
             string userid = "";
             string datawyp = "";
             string dataodd = "";
-            string booklp = "";
+            int booklp = 0;
             string booktytul = "";
             string bookisbn = "";
             string bookgatunek = "";
@@ -75,7 +75,7 @@ namespace BookTook
 
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Descending));
         }
 
         private void button_wypozycz_Click(object sender, RoutedEventArgs e)
@@ -87,12 +87,12 @@ namespace BookTook
 
         private void KartaKsiazki_OnDeactivated(object sender, EventArgs e)
         {
-            string bookid = "";
+            int bookid = 0;
             string bookautor = "";
             string userid = "";
             string datawyp = "";
             string dataodd = "";
-            string booklp = "";
+            int booklp = 0;
             string booktytul = "";
             string bookisbn = "";
             string bookgatunek = "";
@@ -124,24 +124,24 @@ namespace BookTook
             listView.ItemsSource = items;
 
 
-            label_id.Content = bookid;
+            label_id.Content = bookid.ToString();
             label_autor.Content = bookautor;
             label_tytul.Content = booktytul;
             label_isbn.Content = bookisbn;
             label_gatunek.Content = bookgatunek;
             label_rokwyd.Content = bookrokwyd;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Descending));
         }
 
         private void KartaKsiazki_OnActivated(object sender, EventArgs e)
         {
-            string bookid = "";
+            int bookid = 0;
             string bookautor = "";
             string userid = "";
             string datawyp = "";
             string dataodd = "";
-            string booklp = "";
+            int booklp = 0;
             string booktytul = "";
             string bookisbn = "";
             string bookgatunek = "";
@@ -180,7 +180,7 @@ namespace BookTook
             label_gatunek.Content = bookgatunek;
             label_rokwyd.Content = bookrokwyd;
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listView.ItemsSource);
-            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Ascending));
+            view.SortDescriptions.Add(new SortDescription("Lp", ListSortDirection.Descending));
         }
 
         DateTime date1 = DateTime.Now;
@@ -190,12 +190,20 @@ namespace BookTook
             string data = date1.Day + "." + date1.Month + "." + date1.Year;
             string lp = "";
             string column = "BookId";
-            SingletonWithoutLocks.Instance.DBLastLp(ref lp, "KartaKsiazki", index, column);
+            int fl = 0;
+            SingletonWithoutLocks.Instance.DBLastLp(ref lp, "KartaKsiazki", index, column, ref fl);
             int booklp = Convert.ToInt32(lp);
-            //booklp--;
-
-            SingletonWithoutLocks.Instance.DBCommand("UPDATE KartaKsiazki SET DataOdd = '"+data+ "' WHERE BookId = " + index + " AND BookLp = "+booklp+";");
-            MessageBox.Show("Zwrócono pomyślnie.");
+            if (fl == 1)
+            {
+                SingletonWithoutLocks.Instance.DBCommand("UPDATE KartaKsiazki SET DataOdd = '" + data +
+                                                         "' WHERE BookId = " + index + " AND BookLp = " + booklp + ";");
+                MessageBox.Show("Zwrócono pomyślnie.");
+            }
+            else
+            {
+                MessageBox.Show("Musisz najpierw wypożyczyć tą książkę!");
+            }
+            
         }
     }
 }

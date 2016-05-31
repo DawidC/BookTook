@@ -8,7 +8,7 @@ namespace BookTook
 {
     public class ClassKK
     {
-        public string Lp { get; set; }
+        public int Lp { get; set; }
         public string DataWyp { get; set; }
         public string DataOdd { get; set; }
         public string UserId { get; set; }
