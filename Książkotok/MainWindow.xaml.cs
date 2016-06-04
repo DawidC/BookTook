@@ -128,9 +128,13 @@ namespace BookTook
 
         private void Lvusers_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            KartaUzytkownika a = new KartaUzytkownika();
-            a.Show();
-            ///
+            if (lvUsers.SelectedItem != null)
+            {
+                int n = lvUsers.SelectedIndex;
+                KartaUzytkownika a = new KartaUzytkownika(n, textBox_Copy1);
+                a.Show();
+
+            }
         }
 
 
@@ -156,6 +160,7 @@ namespace BookTook
         private void button1_odswiez_Click(object sender, RoutedEventArgs e)
         {
             wyswietlU();
+            textBox_Copy1.Text = "";
         }
 
         private void button1_szukaj_Click(object sender, RoutedEventArgs e)

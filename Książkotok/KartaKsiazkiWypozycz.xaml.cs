@@ -53,7 +53,7 @@ namespace BookTook
 
         private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBox.Text == "")
+            /*if (textBox.Text == "")
             {
                 List<User> items = new List<User>();
                 SingletonWithoutLocks.Instance.DBDataReaderUsers(items);
@@ -64,11 +64,12 @@ namespace BookTook
                 List<User> items = new List<User>();
                 SingletonWithoutLocks.Instance.DBSearchUser(textBox.Text, items);
                 listView.ItemsSource = items;
-            }
+            }*/
         }
 
         DateTime date1 = DateTime.Now;
         string index2="";
+        string index3 = "a";
         private void button_wypozycz_Click(object sender, RoutedEventArgs e)
         {
             string data = date1.Day + "." + date1.Month + "." + date1.Year;
@@ -78,9 +79,13 @@ namespace BookTook
             SingletonWithoutLocks.Instance.DBLastLp(ref lp, "KartaKsiazki", index, "BookId", ref fl);
             int booklp = Convert.ToInt32(lp);
             booklp++;
+            //SingletonWithoutLocks.Instance.DBCounter(, ref ciag, ref licznik, "Uzytkownicy", 7);
             if (fl == 2)
             {
-
+                if (index3 == "a")
+                {
+                    
+                }
                 if (listView.SelectedItem == null)
                 {
                     MessageBox.Show("Wybierz osobę z listy!");
@@ -88,20 +93,22 @@ namespace BookTook
                 else
                 {
                     int l = listView.SelectedIndex;
+                    
                     string[] ciag = new string[l + 1];
                     int licznik = 0;
-
+                    //MessageBox.Show(l.ToString());
                     SingletonWithoutLocks.Instance.DBCounter(l, ref ciag, ref licznik, "Uzytkownicy", 7);
-
+                    // MessageBox.Show(l.ToString());
+                    
                     if (textBox.Text == "" || textBox.Text == "Szukaj")
                     {
                         index2 = ciag[l];
                     }
                     else
                     {
-                        index2 = SingletonWithoutLocks.Instance.listId[l];
+                        index2 = SingletonWithoutLocks.Instance.listId2[l];
                     }
-
+                    //MessageBox.Show(index2);
                     //index <- index książki
                     //index2 <- index usera
 
@@ -115,10 +122,50 @@ namespace BookTook
             }
             else
             {
+               // MessageBox.Show(index3);
                 MessageBox.Show("Musisz najpierw zwrócić książkę!");
             }
             //MessageBox.Show(fl.ToString());
             }
+
+        private void TextBox_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (textBox.Text == "")
+                {
+                    List<User> items = new List<User>();
+                    SingletonWithoutLocks.Instance.DBDataReaderUsers(items);
+                    listView.ItemsSource = items;
+                }
+                else
+                {
+                    int n = listView.SelectedIndex;
+                    index3 = n.ToString();
+                    List<User> items = new List<User>();
+                    SingletonWithoutLocks.Instance.DBSearchUser2(textBox.Text, items);
+                    listView.ItemsSource = items;
+                }
+            }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBox.Text == "")
+            {
+                List<User> items = new List<User>();
+                SingletonWithoutLocks.Instance.DBDataReaderUsers(items);
+                listView.ItemsSource = items;
+            }
+            else
+            {
+                int n = listView.SelectedIndex;
+                index3 = n.ToString();
+                List<User> items = new List<User>();
+                SingletonWithoutLocks.Instance.DBSearchUser2(textBox.Text, items);
+                listView.ItemsSource = items;
+            }
+        }
     }
 }
 

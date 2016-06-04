@@ -33,14 +33,17 @@ namespace BookTook
             int licznik = 0;
             SingletonWithoutLocks.Instance.DBCounter(n, ref ciag, ref licznik, "Uzytkownicy",7);
             tmpn = n.ToString();
+            
+            
             if (a.Text == "" || a.Text == "Szukaj")
             {
                 index = ciag[n];
             }
             else
             {
-                index = SingletonWithoutLocks.Instance.listId[n];
+                index = SingletonWithoutLocks.Instance.listId2[n];
             }
+          //  MessageBox.Show(index);
 
             string imie = "";
             string nazwisko = "";

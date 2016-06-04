@@ -257,6 +257,7 @@ namespace BookTook
             DBConnClose();
         }
 
+
         public void DBLastLpAll(ref string lp, string tabela, string bookid)
         {
             sqlite_conn = new SQLiteConnection("Data Source=Ksiazkotok.db;Version=3;New=False;Compress=False;");
@@ -435,6 +436,7 @@ namespace BookTook
         }
 
         public string[] listId = new string[255];
+        public string[] listId2 = new string[255];
         public void DBSearch(string ciag, List<Book> items)
         {
             DBConnOpen();
@@ -475,6 +477,7 @@ namespace BookTook
             sqlite_cmd.CommandText = "SELECT * FROM Uzytkownicy WHERE Imie LIKE '%" + ciag + "%' OR Nazwisko LIKE '%" + ciag + "%' OR Id LIKE '%" + ciag + "%' OR Email LIKE '%" + ciag + "%' OR Telefon LIKE '%" + ciag + "%' OR TypKonta LIKE '%" + ciag + "%' ";
             sqlite_cmd.ExecuteNonQuery();
             sqlite_datareader = sqlite_cmd.ExecuteReader();
+            int i = 0;
             while (sqlite_datareader.Read())
             {
                 string dataId = sqlite_datareader.GetString(0);
@@ -488,7 +491,38 @@ namespace BookTook
                 if (dataFlaga == "1")
                 {
                     items.Add(new User() { Id = dataId, Flaga = dataFlaga, Imie = dataImie, Email = dataEmail, Nazwisko = dataNazwisko, IloscKsiazek = dataIloscKsiazek, Telefon = dataTelefon, TypKonta = dataTypKonta});
-                    
+                    listId2[i] = dataId;
+                    i++;
+                }
+            }
+            DBConnClose();
+        }
+
+        public void DBSearchUser2(string ciag, List<User> items)
+        {
+            DBConnOpen();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+
+            sqlite_cmd.CommandText = "SELECT * FROM Uzytkownicy WHERE Imie LIKE '%" + ciag + "%' OR Nazwisko LIKE '%" + ciag + "%' OR Id LIKE '%" + ciag + "%'";
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+
+            int i = 0;
+            while (sqlite_datareader.Read())
+            {
+                string dataId = sqlite_datareader.GetString(0);
+                string dataImie = sqlite_datareader.GetString(1);
+                string dataNazwisko = sqlite_datareader.GetString(2);
+                string dataEmail = sqlite_datareader.GetString(3);
+                string dataTelefon = sqlite_datareader.GetString(4);
+                string dataTypKonta = sqlite_datareader.GetString(5);
+                string dataIloscKsiazek = sqlite_datareader.GetString(6);
+                string dataFlaga = sqlite_datareader.GetString(7);
+                if (dataFlaga == "1")
+                {
+                    items.Add(new User() { Id = dataId, Flaga = dataFlaga, Imie = dataImie, Email = dataEmail, Nazwisko = dataNazwisko, IloscKsiazek = dataIloscKsiazek, Telefon = dataTelefon, TypKonta = dataTypKonta });
+                    listId2[i] = dataId;
+                    i++;
                 }
             }
             DBConnClose();

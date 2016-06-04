@@ -24,11 +24,10 @@
             </ListView.View>
         </ListView>
         <Grid>
-            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,17,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="326" PreviewMouseDown="TextBox_OnMouseDown" TextChanged="TextBox_OnTextChanged"/>
-            <Button x:Name="button" Content="" Margin="316,19,17,0" VerticalAlignment="Top" Height="18" BorderBrush="{x:Null}">
-                <Button.Background>
-                    <ImageBrush ImageSource="lupa.png" Stretch="Uniform"/>
-                </Button.Background>
+            <TextBox x:Name="textBox" KeyDown="TextBox_OnKeyDown" HorizontalAlignment="Left" Height="23" Margin="10,17,0,0" TextWrapping="Wrap" Text="Szukaj" VerticalAlignment="Top" Width="326" PreviewMouseDown="TextBox_OnMouseDown" TextChanged="TextBox_OnTextChanged"/>
+            <Button x:Name="button" Margin="0,17,15,0" VerticalAlignment="Top" Height="21" BorderBrush="{x:Null}" Width="25" HorizontalAlignment="Right" Background="{x:Null}" Click="button_Click">
+                <Image x:Name="image1" Height="21" Width="18" Source="lupa.png" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+
             </Button>
 
         </Grid>
