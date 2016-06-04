@@ -5,40 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookTook"
         mc:Ignorable="d"
-        Title="Edytuj książkę" Height="300" Width="360.662">
+        Title="Edytuj książkę" Height="274" Width="360.662" Icon="booktook logoznak.png" MinWidth="360.662" MinHeight="274" MaxWidth="360.662" MaxHeight="274">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="252*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="150*"/>
-            <RowDefinition Height="119*"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="button_add" Content="Zapisz" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Width="75" Click="button_add_Click" RenderTransformOrigin="-0.089,1.08" Grid.Row="1" Grid.ColumnSpan="2" Height="20"/>
-        <TextBox x:Name="textBox_autor" HorizontalAlignment="Left" Height="23" Margin="53,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" TextChanged="textBox_autor_TextChanged"/>
-        <Label x:Name="Label_autor" Content="Autor" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="40"/>
-        <Label x:Name="label" Content="Tytuł" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="36"/>
-        <Label x:Name="label1" Content="ISBN" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="35"/>
-        <Label x:Name="label2" Content="Gatunek" HorizontalAlignment="Left" Margin="5,93,0,27" RenderTransformOrigin="-0.123,-0.028" Grid.ColumnSpan="2" Width="54"/>
-        <Label x:Name="label3" Content="Rok wydania" HorizontalAlignment="Left" Margin="5,122,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="77"/>
-        <Label x:Name="label4" Content="Uwagi" HorizontalAlignment="Left" Margin="7,2,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" Height="26" Width="43"/>
-        <TextBox x:Name="textBox_tytul" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_tytul_TextChanged"/>
-        <TextBox x:Name="textBox_isbn" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_isbn_TextChanged"/>
-        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="53,93,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged" Height="22">
-            <ComboBoxItem Content="Fantastyka" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Kryminał" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Młodzieżowa" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Obyczajowa" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Poezja" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Popularnonaukowa" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Proza" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Przygodowa" HorizontalAlignment="Left" Width="118"/>
+
+        <Image x:Name="image" Grid.ColumnSpan="2" Source="booktooktlo.jpg" Stretch="UniformToFill"/>
+
+        <Button x:Name="button_add" Content="Zapisz" HorizontalAlignment="Right" Margin="0,0,134,22" VerticalAlignment="Bottom" Width="75" Click="button_add_Click" RenderTransformOrigin="-0.089,1.08" Height="20" Grid.Column="1" Foreground="White" BorderBrush="{x:Null}" Background="#FF64566D"/>
+        <TextBox x:Name="textBox_autor" HorizontalAlignment="Left" Height="23" Margin="22,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Grid.Column="1" TextChanged="textBox_autor_TextChanged"/>
+        <Label x:Name="Label_autor" Content="Autor" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Height="26" Width="40" Foreground="White"/>
+        <Label x:Name="label" Content="Tytuł" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="26" Width="36" Foreground="White"/>
+        <Label x:Name="label1" Content="ISBN" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" Height="26" Width="35" Foreground="White"/>
+        <Label x:Name="label2" Content="Gatunek" HorizontalAlignment="Left" Margin="10,96,0,0" RenderTransformOrigin="-0.123,-0.028" Width="54" Foreground="White" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Rok wydania" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top" Height="26" Width="77" Foreground="White"/>
+        <Label x:Name="label4" Content="Uwagi" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" Height="26" Width="43" Foreground="White"/>
+        <TextBox x:Name="textBox_tytul" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" TextChanged="textBox_tytul_TextChanged"/>
+        <TextBox x:Name="textBox_isbn" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" TextChanged="textBox_isbn_TextChanged"/>
+        <ComboBox x:Name="comboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="22,99,0,0" VerticalAlignment="Top" Width="193" SelectionChanged="comboBox_SelectionChanged" Height="22">
+            <ComboBoxItem Content="Fantastyka" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Kryminał" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Młodzieżowa" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Obyczajowa" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Poezja" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Popularnonaukowa" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Proza" HorizontalAlignment="Left" Width="193"/>
+            <ComboBoxItem Content="Przygodowa" HorizontalAlignment="Left" Width="193"/>
         </ComboBox>
-        <TextBox x:Name="textBox_rokwyd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_rokwyd_TextChanged"/>
-        <TextBox x:Name="textBox_uwagi" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="53,2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="textBox_uwagi_TextChanged" Grid.Row="1"/>
-        <Label x:Name="label_zladata" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="193,122,0,0" VerticalAlignment="Top" Height="28" Width="116"/>
-        <Button x:Name="button_usun" Content="Usuń" Grid.Column="1" HorizontalAlignment="Right" Margin="0,89,134,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="button_usun_Click"/>
+        <TextBox x:Name="textBox_rokwyd" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" TextChanged="textBox_rokwyd_TextChanged"/>
+        <TextBox x:Name="textBox_uwagi" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="22,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" TextChanged="textBox_uwagi_TextChanged"/>
+        <Label x:Name="label_zladata" Content="" HorizontalAlignment="Left" Margin="10,0,0,22" VerticalAlignment="Bottom" Height="28" Width="116" Grid.ColumnSpan="2"/>
+        <Button x:Name="button_usun" Content="Usuń" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,37,22" VerticalAlignment="Bottom" Width="75" Click="button_usun_Click" Height="20" Foreground="White" BorderBrush="{x:Null}" Background="#FF605280"/>
 
     </Grid>
 </Window>

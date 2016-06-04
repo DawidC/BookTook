@@ -5,27 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookTook"
         mc:Ignorable="d"
-        Title="Edytuj użytkownika" Height="300" Width="300">
+        Title="Edytuj użytkownika" Height="300" Width="300" Icon="booktook logoznak.png" MinWidth="300" MinHeight="300" MaxWidth="300" MaxHeight="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="59*"/>
-            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="189*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="labelimie" Content="Imię" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.068,-0.436"/>
-        <Label x:Name="labelnazwisko" Content="Nazwisko" HorizontalAlignment="Left" Margin="26,65,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelemail" Content="Email" HorizontalAlignment="Left" Margin="26,96,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labeltelefon" Content="Telefon" HorizontalAlignment="Left" Margin="26,127,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labeltypkonta" Content="Typ konta" HorizontalAlignment="Left" Margin="26,158,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBoximie" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxnazwisko" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxemail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="textBoxtelefon" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBoxtypkonta" Grid.Column="1" HorizontalAlignment="Left" Margin="0,162,0,0" VerticalAlignment="Top" Width="120">
+        <Image x:Name="image" Source="booktooktlo.jpg" Grid.ColumnSpan="2" Stretch="UniformToFill"/>
+
+        <Label x:Name="labelimie" Content="Imię" HorizontalAlignment="Left" Margin="17,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.068,-0.436" Foreground="White" Height="26" Width="33"/>
+        <Label x:Name="labelnazwisko" Content="Nazwisko" HorizontalAlignment="Left" Margin="17,65,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="60"/>
+        <Label x:Name="labelemail" Content="Email" HorizontalAlignment="Left" Margin="17,96,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="38"/>
+        <Label x:Name="labeltelefon" Content="Telefon" HorizontalAlignment="Left" Margin="17,127,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="48"/>
+        <Label x:Name="labeltypkonta" Content="Typ konta" HorizontalAlignment="Left" Margin="17,158,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="62"/>
+        <TextBox x:Name="textBoximie" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+        <TextBox x:Name="textBoxnazwisko" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+        <TextBox x:Name="textBoxemail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+        <TextBox x:Name="textBoxtelefon" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+        <ComboBox x:Name="comboBoxtypkonta" Grid.Column="1" HorizontalAlignment="Left" Margin="0,162,0,0" VerticalAlignment="Top" Width="156" Height="22">
             <ComboBoxItem Content="Uczeń" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Nauczyciel" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <Button x:Name="button_zapisz" Content="Zapisz" HorizontalAlignment="Left" Margin="26,224,0,0" VerticalAlignment="Top" Width="75" Click="button_zapisz_Click"/>
-        <Button x:Name="button_usun" Content="Usuń" Grid.Column="1" HorizontalAlignment="Left" Margin="71,224,0,0" VerticalAlignment="Top" Width="75" Click="button_usun_Click"/>
+        <Button x:Name="button_zapisz" Content="Zapisz" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Width="75" Click="button_zapisz_Click" Height="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF6C5C76" Grid.Column="1"/>
+        <Button x:Name="button_usun" Content="Usuń" Grid.Column="1" HorizontalAlignment="Left" Margin="81,224,0,0" VerticalAlignment="Top" Width="75" Click="button_usun_Click" Height="20" BorderBrush="{x:Null}" Foreground="White" Background="#FF7B628B"/>
 
     </Grid>
 </Window>

@@ -80,7 +80,7 @@ namespace BookTook
 
         private void textBox_Copy_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBox_Copy.Text == "")
+           /* if (textBox_Copy.Text == "")
             {
                 wyswietl();
             }
@@ -89,7 +89,7 @@ namespace BookTook
                 List<Book> items = new List<Book>();
                 SingletonWithoutLocks.Instance.DBSearch(textBox_Copy.Text, items);
                 lvBooks.ItemsSource = items;
-            }
+            }*/
         }
 
         int x =0;
@@ -128,7 +128,9 @@ namespace BookTook
 
         private void Lvusers_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+            KartaUzytkownika a = new KartaUzytkownika();
+            a.Show();
+            ///
         }
 
 
@@ -160,7 +162,7 @@ namespace BookTook
         {
             if (textBox_Copy1.Text == "" || textBox_Copy1.Text == "Szukaj")
             {
-                wyswietl();
+                wyswietlU();
             }
             else
             {
@@ -172,7 +174,7 @@ namespace BookTook
 
         private void textBox_Copy1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (textBox_Copy1.Text == "" || textBox_Copy1.Text == "Szukaj")
+          /*  if (textBox_Copy1.Text == "" || textBox_Copy1.Text == "Szukaj")
             {
                 wyswietl();
             }
@@ -181,7 +183,7 @@ namespace BookTook
                 List<User> items = new List<User>();
                 SingletonWithoutLocks.Instance.DBSearchUser(textBox_Copy1.Text, items);
                 lvUsers.ItemsSource = items;
-            }
+            }*/
         }
 
         private void button_edytuj_book_Click(object sender, RoutedEventArgs e)
@@ -203,6 +205,41 @@ namespace BookTook
                 EditUser a = new EditUser(n, textBox_Copy1);
                 a.Show();
 
+            }
+        }
+
+        private void TextBox_Copy_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                //MessageBox.Show(e.Key.ToString());
+                if (textBox_Copy.Text == "" || textBox_Copy.Text == "Szukaj")
+                {
+                    wyswietl();
+                }
+                else
+                {
+                    List<Book> items = new List<Book>();
+                    SingletonWithoutLocks.Instance.DBSearch(textBox_Copy.Text, items);
+                    lvBooks.ItemsSource = items;
+                }
+            }
+        }
+
+        private void TextBox_Copy1_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (textBox_Copy1.Text == "" || textBox_Copy1.Text == "Szukaj")
+                {
+                    wyswietlU();
+                }
+                else
+                {
+                    List<User> items = new List<User>();
+                    SingletonWithoutLocks.Instance.DBSearchUser(textBox_Copy1.Text, items);
+                    lvUsers.ItemsSource = items;
+                }
             }
         }
     }

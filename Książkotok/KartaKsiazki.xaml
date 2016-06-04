@@ -7,10 +7,12 @@
         Deactivated="KartaKsiazki_OnDeactivated"
         Activated="KartaKsiazki_OnActivated"
         mc:Ignorable="d"
-        Title="Karta Książki" Height="316.544" Width="498.529">
-    
+        Title="Karta Książki" Height="422.466" Width="607.649" Icon="booktook logoznak.png">
+
     <Grid>
-        <ListView Name="listView" HorizontalAlignment="Left" Height="208" Margin="127,10,0,0" VerticalAlignment="Top" Width="354">
+        <Image x:Name="image" HorizontalAlignment="Center" VerticalAlignment="Center" Source="booktooktlo.jpg" Stretch="UniformToFill"/>
+
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="298" Margin="221,25,0,0" VerticalAlignment="Top" Width="354">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Lp" DisplayMemberBinding="{Binding Lp}"/>
@@ -22,15 +24,21 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label_autor" Content="Autor" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_tytul" Content="Tytuł" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.608,0.656"/>
-        <Label x:Name="label_isbn" Content="ISBN" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_gatunek" Content="Gatunek" HorizontalAlignment="Left" Margin="10,126,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_rokwyd" Content="RokWydania" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.976,-0.639"/>
-        <Label x:Name="label_id" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,-0.053"/>
-        <Button x:Name="button_wypozycz" Content="Wypożycz" HorizontalAlignment="Left" Margin="44,239,0,0" VerticalAlignment="Top" Width="75" Click="button_wypozycz_Click"/>
-        <Button x:Name="button_przeduz" Content="Przedłuż" HorizontalAlignment="Left" Margin="142,239,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.003,-0.406"/>
-        <Button x:Name="button_zwroc" Content="Zwróć" HorizontalAlignment="Left" Margin="246,239,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.057,-0.426" Click="button_zwroc_Click"/>
+        <Label x:Name="label_autor" Content="Autor" HorizontalAlignment="Left" Margin="98,27,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_tytul" Content="Tytuł" HorizontalAlignment="Left" Margin="98,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.608,0.656"/>
+        <Label x:Name="label_isbn" Content="ISBN" HorizontalAlignment="Left" Margin="98,62,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_gatunek" Content="Gatunek" HorizontalAlignment="Left" Margin="98,78,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_rokwyd" Content="RokWydania" HorizontalAlignment="Left" Margin="98,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.976,-0.639"/>
+        <Label x:Name="label_id" Content="ID" HorizontalAlignment="Left" Margin="98,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,-0.053"/>
+        <Button x:Name="button_wypozycz" Content="Wypożycz" HorizontalAlignment="Right" Margin="0,0,210,28" VerticalAlignment="Bottom" Width="75" Click="button_wypozycz_Click" BorderBrush="{x:Null}" Background="#FF7C00D3" Foreground="White" VerticalContentAlignment="Center"/>
+        <Button x:Name="button_przeduz" Content="Przedłuż" HorizontalAlignment="Right" Margin="0,0,28,28" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="0.003,-0.406" BorderBrush="{x:Null}" Background="#FF543D99" Foreground="White"/>
+        <Button x:Name="button_zwroc" Content="Zwróć" HorizontalAlignment="Right" Margin="0,0,119,28" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="-0.057,-0.426" Click="button_zwroc_Click" Background="#FF8A1CD6" Foreground="White" BorderBrush="{x:Null}"/>
+        <Label x:Name="label" Content="Autor" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.885" Foreground="White"/>
+        <Label x:Name="label_Copy" Content="Tytuł" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.885" Foreground="White"/>
+        <Label x:Name="label_Copy1" Content="ISBN" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.885" Foreground="White"/>
+        <Label x:Name="label_Copy2" Content="Gatunek" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.885" Foreground="White"/>
+        <Label x:Name="label_Copy3" Content="Rok wydania" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.885" Foreground="White"/>
+        <Label x:Name="label_Copy4" Content="ID" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.885" Foreground="White"/>
 
     </Grid>
 </Window>
