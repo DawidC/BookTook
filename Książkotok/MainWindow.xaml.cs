@@ -60,6 +60,7 @@ namespace BookTook
         private void button_odswiez_Click(object sender, RoutedEventArgs e)
         {
             wyswietl();
+            textBox_Copy.Text = "";
         }
 
         private void button_szukaj_Click(object sender, RoutedEventArgs e)

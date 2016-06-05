@@ -65,7 +65,7 @@ namespace BookTook
                 SingletonWithoutLocks.Instance.DBLastElement(ref id, "Ksiazki");
                 int intid = Convert.ToInt32(id);
                 string booklp = "1";
-                SingletonWithoutLocks.Instance.DBCommand("INSERT INTO KartaKsiazki (BookId, BookLp, DataWyp, DataOdd, UId) VALUES ('"+intid+"', '"+booklp +"', '0','0','0');");
+                SingletonWithoutLocks.Instance.DBCommand("INSERT INTO KartaKsiazki (BookId, BookLp, DataWyp, DataOdd, UId) VALUES ('"+intid+"', '"+booklp +"', '1','1','0');");
                 MessageBox.Show("Wpis dodany !");
                 textBox_autor.Text = "";
                 textBox_tytul.Text = "";

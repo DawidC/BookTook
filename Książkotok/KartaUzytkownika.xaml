@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookTook"
         mc:Ignorable="d"
-        Title="KartaUzytkownika" Height="327.574" Width="340.809" Icon="booktook logoznak.png" MinWidth="340.809" MaxWidth="340.809" MinHeight="327.574" MaxHeight="327.574">
+        Title="KartaUzytkownika" Height="37.574" Width="380.809" Icon="booktook logoznak.png" MinWidth="380.809" MaxWidth="380.809" MinHeight="327.574" MaxHeight="327.574">
     <Grid>
         <Image x:Name="image" Source="booktooktlo.jpg" Stretch="UniformToFill"/>
 
-        <ListView x:Name="listView" Height="249" Margin="31,23,30,25" Width="272" BorderBrush="{x:Null}" HorizontalContentAlignment="Center">
+        <ListView x:Name="listView" Height="249" Margin="21,23,21,25" BorderBrush="{x:Null}" HorizontalContentAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Lp" DisplayMemberBinding="{Binding Lp}"/>
                     <GridViewColumn Header="Data wypożyczenia" DisplayMemberBinding="{Binding DataWyp}"/>
                     <GridViewColumn Header="Data oddania" DisplayMemberBinding="{Binding DataOdd}"/>
-                    <GridViewColumn Header="Tytuł" DisplayMemberBinding="{Binding Tytuł}"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Tytuł" DisplayMemberBinding="{Binding Tytul}"/>
                 </GridView>
             </ListView.View>
         </ListView>

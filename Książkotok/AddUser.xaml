@@ -24,8 +24,8 @@
         <TextBox x:Name="textBoxemail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
         <TextBox x:Name="textBoxtelefon" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="0,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
         <ComboBox x:Name="comboBoxtypkonta" Grid.Column="1" HorizontalAlignment="Left" Margin="0,162,0,0" VerticalAlignment="Top" Width="164" Height="22">
-            <ComboBoxItem Content="Uczeń" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Nauczyciel" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Uczeń" HorizontalAlignment="Left" Width="164"/>
+            <ComboBoxItem Content="Nauczyciel" HorizontalAlignment="Left" Width="164"/>
         </ComboBox>
 
     </Grid>

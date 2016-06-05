@@ -75,7 +75,6 @@
                     <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"  />
                     <GridViewColumn Header="Telefon" DisplayMemberBinding="{Binding Telefon}"  />
                     <GridViewColumn Header="Typ Konta" DisplayMemberBinding="{Binding TypKonta}"  />
-                    <GridViewColumn Header="Ilość Książek" DisplayMemberBinding="{Binding IloscKsiazek}"  />
                 </GridView>
             </ListView.View>
         </ListView>

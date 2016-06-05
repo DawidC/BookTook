@@ -528,6 +528,45 @@ namespace BookTook
             DBConnClose();
         }
 
+        public int value = 0;
+
+        public void DBGetValue(string index, List<ClassKU> items)
+        {
+            
+        }
+        public void DBKUQuery(string index, List<ClassKU> items)
+        {
+            DBConnOpen();
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText =
+                "SELECT * FROM KartaKsiazki, Ksiazki,Uzytkownicy WHERE KartaKsiazki.Uid=Uzytkownicy.Id AND KartaKsiazki.BookId = Ksiazki.Id AND Uzytkownicy.Id = " +
+                index;
+            sqlite_cmd.ExecuteNonQuery();
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                string dataDataWyp = sqlite_datareader.GetString(3);
+                string dataDataOdd = sqlite_datareader.GetString(4);
+                string dataBookId = sqlite_datareader.GetString(6);
+                string dataTytul = sqlite_datareader.GetString(8);
+
+                items.Add(new ClassKU()
+                {
+                    DataOdd = dataDataOdd,
+                    DataWyp = dataDataWyp,
+                    Id = dataBookId,
+                    Tytul = dataTytul
+                
+                });
+                if (dataDataWyp != "0" && dataDataOdd == "0")
+                {
+                    value++;
+                }
+            }
+
+            DBConnClose();
+        }
+
         private SingletonWithoutLocks()
         {
             m_nCounter = 1;

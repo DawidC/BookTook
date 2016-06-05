@@ -42,9 +42,10 @@ namespace BookTook
             {
                 index = SingletonWithoutLocks.Instance.listId2[n];
             }
-             // MessageBox.Show(index);
-
-           
+            // MessageBox.Show(index);
+            List<ClassKU> items = new List<ClassKU>();
+            SingletonWithoutLocks.Instance.DBKUQuery(index, items);
+            listView.ItemsSource = items;
         }
     }
 }
